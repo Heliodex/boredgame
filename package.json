@@ -1,0 +1,11 @@
+{
+	"name": "boredgame",
+	"private": true,
+	"devDependencies": {
+		"@biomejs/biome": "^2.3.7",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	}
+}
