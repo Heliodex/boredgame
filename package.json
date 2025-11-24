@@ -2,7 +2,7 @@
 	"name": "boredgame",
 	"private": true,
 	"scripts": {
-		"dev": "bun run ./src/main.ts"
+		"dev": "bun run ./main.ts"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.3.7",
