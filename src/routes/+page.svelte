@@ -40,15 +40,15 @@
 	}
 
 	.river {
-		background-color: hsl(223, 100%, 50%);
+		background-color: hsl(220, 100%, 50%);
 	}
 	.grass {
-		background-color: hsl(120 100 25);
+		background-color: hsl(120, 100%, 25%);
 	}
 	.hill {
-		background-color: hsla(30, 100%, 36%, 0.727);
+		background-color: hsl(30, 70%, 25%);
 	}
 	.mountain {
-		background-color: hsl(0 0 30);
+		background-color: hsl(0, 0%, 30%);
 	}
 </style>
