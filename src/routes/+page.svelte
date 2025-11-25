@@ -15,13 +15,28 @@
 <style>
 	.row {
 		display: flex;
+		--width: 1px;
 	}
 
 	.cell {
-		width: 2rem;
-		height: 2rem;
+		width: 30px;
+		height: 30px;
 		box-sizing: border-box;
-		/* border: 1px solid black; */
+		border: var(--width) solid black;
+	}
+
+	/* add an extra border to every 7th */
+	.cell:nth-child(10n) {
+		border-right: var(--width) solid red;
+	}
+	.cell:nth-child(10n + 1) {
+		border-left: var(--width) solid red;
+	}
+	.row:nth-child(10n) {
+		border-bottom: var(--width) solid red;
+	}
+	.row:nth-child(10n + 1) {
+		border-top: var(--width) solid red;
 	}
 
 	.river {

@@ -1,7 +1,7 @@
 import { noise } from "$lib/noise"
 
-const width = 21
-const height = 21
+const width = 30
+const height = 30
 
 type Terrain = "river" | "grass" | "hill" | "mountain"
 
@@ -10,6 +10,26 @@ function getTerrain(elevation: number): Terrain {
 	if (elevation < 0.7) return "grass"
 	if (elevation < 0.9) return "hill"
 	return "mountain"
+}
+
+function rotate90(map: number[][]): number[][] {
+	const newMap: number[][] = Array.from({ length: width }, () =>
+		Array.from({ length: height }, () => 0)
+	)
+
+	for (let y = 0; y < height; y++)
+		for (let x = 0; x < width; x++) newMap[x][height - y - 1] = map[y][x]
+
+	return newMap
+}
+
+function rotateRandom(map: number[][]) {
+	const times = Math.floor(Math.random() * 4)
+
+	let newMap = map
+	for (let t = 0; t < times; t++) newMap = rotate90(newMap)
+
+	return newMap
 }
 
 // go from top to bottom, add a river
@@ -21,7 +41,7 @@ function genRiver(map: number[][]) {
 
 		map[y][riverX] = riverE
 		// randomly move left or right (sway to the centre)
-		const move = Math.random() + (width / 2 - riverX) * 0.05
+		const move = Math.random() + (width / 2 - riverX) * 0.03
 		if (move < 0.4 && riverX > 0) {
 			riverX--
 			map[y][riverX] = riverE
@@ -40,7 +60,9 @@ export function generateMap(): Terrain[][] {
 
 	genRiver(map)
 
-	return map.map(row =>
+	const final = rotateRandom(map)
+
+	return final.map(row =>
 		row.map(cell => {
 			return getTerrain(cell)
 		})
