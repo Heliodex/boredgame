@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { applyAction } from "$app/forms"
 	import favicon from "$lib/assets/favicon.svg"
 	import "/src/app.css"
 

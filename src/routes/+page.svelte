@@ -1,23 +1,13 @@
 <script lang="ts">
-	import { noise } from "$lib/noise"
+	import { generateMap } from "$lib/mapgen"
 
-	const width = 21
-	const height = 21
-
-	const seed = 0.5
-
-	const scale = 15
-	const map = Array.from({ length: height }, (_, y) =>
-		Array.from({ length: width }, (_, x) =>
-			noise(x / scale, y / scale, seed)
-		)
-	)
+	const map = generateMap()
 </script>
 
-{#each Array(height) as _, y}
+{#each map as row}
 	<div class="row">
-		{#each Array(width) as _, x}
-			<div class={["cell", map[y][x] > 0.6 ? "mountain" : "grass"]}></div>
+		{#each row as cell}
+			<div class={["cell", cell]}></div>
 		{/each}
 	</div>
 {/each}
@@ -31,14 +21,19 @@
 		width: 2rem;
 		height: 2rem;
 		box-sizing: border-box;
-		border: 2px solid black;
+		/* border: 1px solid black; */
 	}
 
-	.mountain {
-		background-color: grey;
+	.river {
+		background-color: hsl(223, 100%, 50%);
 	}
-
 	.grass {
-		background-color: green;
+		background-color: hsl(120 100 25);
+	}
+	.hill {
+		background-color: hsla(30, 100%, 36%, 0.727);
+	}
+	.mountain {
+		background-color: hsl(0 0 30);
 	}
 </style>
