@@ -1,5 +1,3 @@
-import { noise } from "$lib/noise"
-
 const width = 30
 const height = 30
 
@@ -38,7 +36,7 @@ function genRiver(
 	startX: number,
 	startY = 0,
 	direction = 0,
-	forked = false,
+	forked = false
 ) {
 	const riverE = 0.1
 	let hasForked = forked
@@ -77,7 +75,7 @@ function genMountain(map: number[][]): boolean {
 	const centerX = Math.floor(Math.random() * width)
 	const centerY = Math.floor(Math.random() * height)
 
-	const maxRadius = Math.floor(Math.random() * 2) + 2
+	const maxRadius = Math.floor(Math.random() * 3) + 2
 
 	// make sure river if far enough
 
